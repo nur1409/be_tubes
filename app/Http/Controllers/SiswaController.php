@@ -10,6 +10,16 @@ class SiswaController extends Controller
     public function index()
     {
         return response()->json(Siswa::all());
+
+        $query = Siswa::query();
+
+        if ($request->has('cari')) {
+            $query->where('nama', 'like', '%' . $request->cari . '%');
+        }
+    
+        $data = $query->get();
+    
+        return view('siswa.index', compact('data'));
     }
 
     public function store(Request $request) 

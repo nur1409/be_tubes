@@ -11,4 +11,9 @@ class Siswa extends Model
     protected $table = 'siswa';
     protected $fillable = ['nama', 'nisn', 'asal_sekolah', 'alamat'];
 
+    public function pencairan()
+    {
+        return $this->hasMany(Pencairan::class);
+    }
+
 }
